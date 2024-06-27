@@ -1,4 +1,5 @@
-﻿using Identity.ViewModels;
+﻿using Identity.Models;
+using Identity.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -66,6 +67,7 @@ namespace Identity.Controllers.Authentication
         }
         public IActionResult Login()
         {
+            
             return View();
         }
         [HttpPost]

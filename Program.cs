@@ -13,8 +13,8 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("db"));
 
 });
-builder.Services.Configure <List<Theme>>(builder.Configuration.GetSection("Theme"));
-builder.Services.AddControllersWithViews();
+//builder.Services.Configure <List<Theme>>(builder.Configuration.GetSection("Theme"));
+//builder.Services.AddControllersWithViews();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 

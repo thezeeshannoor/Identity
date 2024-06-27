@@ -1,7 +1,14 @@
 ﻿
 
-@using Microsoft.Extensions.Options
-@inject IOptions<List<Theme>> NavigationBarOptions
+@* @using Microsoft.Extensions.Options *@
+@* @inject IOptions<List<Theme>> NavigationBarOptions *@
+@* @{
+    // var items = ViewBag.Theme as List<Theme>;
+
+} *@
+@{
+    var themes = Identity.Models.LoadNavigation.LoadThemes();
+}
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
@@ -13,9 +20,9 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                @foreach (var item in NavigationBarOptions.Value)
+                @foreach (var theme in themes)
                 {
-                    @foreach( var i in item.Nav){
+                    @foreach( var i in theme.Nav){
                     <li class="nav-item">
                         @if (i.Name == "Home")
                         {

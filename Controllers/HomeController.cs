@@ -17,6 +17,7 @@ namespace Identity.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
