@@ -1,4 +1,5 @@
 using Identity.Data;
+using Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("db"));
 
 });
+builder.Services.Configure <List<Theme>>(builder.Configuration.GetSection("Theme"));
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 
@@ -24,6 +27,9 @@ builder.Services.ConfigureApplicationCookie(option =>
     option.ExpireTimeSpan=TimeSpan.FromDays(30);
     option.SlidingExpiration = true;
 });
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,6 +49,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Register}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

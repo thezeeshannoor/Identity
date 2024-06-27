@@ -1,0 +1,77 @@
+﻿
+
+@using Microsoft.Extensions.Options
+@inject IOptions<List<Theme>> NavigationBarOptions
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <h1 class="sitename">Zeeshan</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                @foreach (var item in NavigationBarOptions.Value)
+                {
+                    @foreach( var i in item.Nav){
+                    <li class="nav-item">
+                        @if (i.Name == "Home")
+                        {
+                            string action = "Index";
+                            <a class="nav-link " asp-area="" asp-controller="@i.Name" asp-action="@action">@i.Name </a>
+                        }
+                        else
+                        {
+                            string controller = "Home";
+                            <a class="nav-link " asp-area="" asp-controller="@controller" asp-action="@i.Name">@i.Name </a>
+                        }
+                    </li>
+                    }
+
+                    
+                }
+                <li><partial name="_LoginPartial" /></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            
+        </nav>
+
+       
+
+    </div>
+</header>
+@* <header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Identity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    @foreach (var item in NavigationBarOptions.Value)
+                    {
+
+                        <li class="nav-item">
+                            @if (item.Name == "Home")
+                            {
+                                string action = "Index";
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@item.Name" asp-action="@action">@item.Name </a>
+                            }
+                            else
+                            {
+                                string controller = "Home";
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@controller" asp-action="@item.Name">@item.Name </a>
+                            }
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <partial name="_LoginPartial" />
+        </div>
+    </nav>
+</header> *@

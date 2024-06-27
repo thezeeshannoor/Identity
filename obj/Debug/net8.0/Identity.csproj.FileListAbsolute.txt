@@ -256,3 +256,4 @@ F:\c#work\Identity\obj\Debug\net8.0\refint\Identity.dll
 F:\c#work\Identity\obj\Debug\net8.0\Identity.pdb
 F:\c#work\Identity\obj\Debug\net8.0\Identity.genruntimeconfig.cache
 F:\c#work\Identity\obj\Debug\net8.0\ref\Identity.dll
+F:\c#work\Identity\obj\Debug\net8.0\Identity.sourcelink.json

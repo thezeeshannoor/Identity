@@ -1,6 +1,6 @@
 ﻿
 @model RegisterVM
-<form action="/" method="post">
+<form action="/" method="post" class=" m-5 py-5">
     <h3 class="text-muted mb-1">Create an Account</h3>
     <hr/>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -21,6 +21,6 @@
         <input type="password" asp-for="ConfirmPassword"  class="form-control" placeholder="Enter your ConfirmPassword" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
-    <button class="btn-primary my-2" type="submit">Submit</button>
+    <button class="btn btn-primary my-2" type="submit">Submit</button>
 
 </form>
