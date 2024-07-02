@@ -47,7 +47,7 @@ namespace Identity.Controllers.Authentication
                     if(result.Succeeded)
                     {
                         await signInManager.SignInAsync(user,isPersistent:false);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Home", "Home");
                     }
                     if (result.Errors.Count() > 0)
                     {
@@ -91,7 +91,7 @@ namespace Identity.Controllers.Authentication
                     if (result.Succeeded)
                     {
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Home", "Home");
                     }
                     ModelState.AddModelError(string.Empty, "Invalid Login Credentials");
 

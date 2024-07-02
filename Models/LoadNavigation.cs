@@ -14,21 +14,19 @@ namespace Identity.Models
             {
                 var json = File.ReadAllText("appsettings.json");
                 var jObjectt = JObject.Parse(json);
-                var themeJson = jObjectt["Theme"].ToString(); // Assuming "Themes" is the correct key in your JSON
-
-                // Deserialize the JSON array into a List<Theme>
+                var themeJson = jObjectt["Theme"].ToString(); 
                 var themes = JsonConvert.DeserializeObject<List<Theme>>(themeJson);
 
                 return themes;
             }
             catch (FileNotFoundException ex)
             {
-                // Handle file not found exception
+                
                 throw new FileNotFoundException("appsettings.json file not found", ex);
             }
             catch (JsonException ex)
             {
-                // Handle JSON parsing exception
+                
                 throw new JsonException("Error parsing appsettings.json", ex);
             }
         }

@@ -1,6 +1,7 @@
 ﻿
 
 @* @using Microsoft.Extensions.Options *@
+@using System.Linq
 @* @inject IOptions<List<Theme>> NavigationBarOptions *@
 @* @{
     // var items = ViewBag.Theme as List<Theme>;
@@ -8,6 +9,10 @@
 } *@
 @{
     var themes = Identity.Models.LoadNavigation.LoadThemes();
+
+                    var action = ViewContext.RouteData.Values["action"].ToString();
+                
+
 }
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
@@ -20,21 +25,19 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
+
                 @foreach (var theme in themes)
                 {
-                    @foreach( var i in theme.Nav){
-                    <li class="nav-item">
-                        @if (i.Name == "Home")
+                    @foreach( var list in theme.Controllers){
+
+                        @foreach (var act in list.Actions.Where(x=>x.Status))
                         {
-                            string action = "Index";
-                            <a class="nav-link " asp-area="" asp-controller="@i.Name" asp-action="@action">@i.Name </a>
+
+                            <li class="nav-item ">
+                                <a class="nav-link @(action == act.Name ? "active" : "") " asp-area="" asp-controller="@list.Name" asp-action="@act.Name">@act.Name </a>
+                            </li>
                         }
-                        else
-                        {
-                            string controller = "Home";
-                            <a class="nav-link " asp-area="" asp-controller="@controller" asp-action="@i.Name">@i.Name </a>
-                        }
-                    </li>
+
                     }
 
                     

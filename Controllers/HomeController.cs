@@ -15,8 +15,9 @@ namespace Identity.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Home()
         {
+            
             
             return View();
         }
@@ -26,6 +27,15 @@ namespace Identity.Controllers
             return View();
         }
 
+        public IActionResult Services()
+        {
+            return View();
+        }
+
+        public IActionResult WhyUs()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
